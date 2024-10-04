@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="success.css">
+</head>
+<body>
+    <div id="container">
+        <h4 id="calendar">Date</h4>
+        <div id="container1">
+            <img src="tick.png" alt="">
+            <h2>SUCCESS</h2>
+        </div>
+    </div>
+
+    <script>
+       
+        var date = new Date();
+        
+        
+        var myday = date.getDay();
+        var mymonth = date.getMonth();
+        var myyear = date.getFullYear();
+
+        var daynames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var monthnames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        
+        var formattedDate = daynames[myday] + ", " + monthnames[mymonth] + " " + date.getDate() + ", " + myyear;
+        
+        var calendar = document.getElementById("calendar");
+        calendar.innerHTML = formattedDate;
+    </script>
+</body>
+</html>

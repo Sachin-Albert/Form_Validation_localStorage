@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div id="container">
+        <form id="loginForm">
+            <h1>LOGIN</h1>
+            <label for="loginUsername">Username</label>
+            <input type="text" id="loginUsername" placeholder="Enter your username">
+            <p id="validUsername"></p>
+
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter your password">
+            <p id="validPassword"></p>
+
+            <button id="loginBtn">Login</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            
+            let loginUsername = document.getElementById("loginUsername").value.trim();
+            let loginPassword = document.getElementById("loginPassword").value.trim();
+
+            
+            let storedUsername = localStorage.getItem("username");
+            let storedPassword = localStorage.getItem("password");
+
+            let isValid = true;
+
+           
+            if (loginUsername === "") {
+                document.getElementById("validUsername").textContent = "Please enter a username";
+                document.getElementById("validUsername").style.color = "red";
+                document.getElementById("loginUsername").style.border = "1.5px solid red";
+                isValid = false;
+            } else if (loginUsername !== storedUsername) {
+                document.getElementById("validUsername").textContent = "Username not found";
+                document.getElementById("validUsername").style.color = "red";
+                document.getElementById("loginUsername").style.border = "1.5px solid red";
+                isValid = false;
+            } else {
+                document.getElementById("loginUsername").style.border = "1.5px solid green";
+                document.getElementById("validUsername").style.display = "none";
+            }
+
+      
+            if (loginPassword === "") {
+                document.getElementById("validPassword").textContent = "Please enter a password";
+                document.getElementById("validPassword").style.color = "red";
+                document.getElementById("loginPassword").style.border = "1.5px solid red";
+                isValid = false;
+            } else if (loginPassword !== storedPassword) {
+                document.getElementById("validPassword").textContent = "Incorrect password";
+                document.getElementById("validPassword").style.color = "red";
+                document.getElementById("loginPassword").style.border = "1.5px solid red";
+                isValid = false;
+            } else {
+                document.getElementById("loginPassword").style.border = "1.5px solid green";
+                document.getElementById("validPassword").style.display = "none";
+            }
+
+            if (isValid) {
+                
+                window.location.href="success.html"
+            }
+        });
+    </script>
+</body>
+</html>
